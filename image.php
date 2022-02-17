@@ -14,9 +14,8 @@ while ( have_posts() ) {
 	the_post();
 	?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<header class="entry-header alignwide">
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		</header><!-- .entry-header -->
+		
+		<?php TTO_Page_Header::render('entry'); ?>
 
 		<div class="entry-content">
 			<figure class="wp-block-image">
@@ -38,16 +37,11 @@ while ( have_posts() ) {
 			</figure><!-- .wp-block-image -->
 
 			<?php
+			
 			the_content();
 
-			wp_link_pages(
-				array(
-					'before'   => '<nav class="page-links" aria-label="' . esc_attr__( 'Page', 'twentytwentyone' ) . '">',
-					'after'    => '</nav>',
-					/* translators: %: Page number. */
-					'pagelink' => esc_html__( 'Page %', 'twentytwentyone' ),
-				)
-			);
+			TTO_PageNav::for_page();
+
 			?>
 		</div><!-- .entry-content -->
 
@@ -63,6 +57,7 @@ while ( have_posts() ) {
 				);
 				echo '</span>';
 			} else {
+
 				// Edit post link.
 				edit_post_link(
 					sprintf(
@@ -73,6 +68,7 @@ while ( have_posts() ) {
 					'<span class="edit-link">',
 					'</span>'
 				);
+
 			}
 
 			// Retrieve attachment metadata.

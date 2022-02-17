@@ -58,6 +58,12 @@ require_once TTO_CLASSES_DIR . '/class-tto-template-function.php';
 // Custom template tags for the theme.
 require_once TTO_CLASSES_DIR . '/class-tto-template-tag.php';
 
+// Template Content for the theme.
+require_once TTO_CLASSES_DIR . '/class-tto-template-part.php';
+
+// HTML Tag.
+require_once TTO_CLASSES_DIR . '/class-tto-html-tag.php';
+
 // Customizer additions.
 require_once TTO_CLASSES_DIR . '/class-tto-customize.php';
 
@@ -66,6 +72,21 @@ require_once TTO_CLASSES_DIR . '/class-tto-blocks.php';
 
 // Menu Functions.
 require_once TTO_CLASSES_DIR . '/class-tto-menu.php';
+
+// Header.
+require_once TTO_CLASSES_DIR . '/class-tto-header.php';
+
+// Page Header.
+require_once TTO_CLASSES_DIR . '/class-tto-page-header.php';
+
+// Page Navigation.
+require_once TTO_CLASSES_DIR . '/class-tto-pagenav.php';
+
+// Footer.
+require_once TTO_CLASSES_DIR . '/class-tto-footer.php';
+
+// Sidebar.
+require_once TTO_CLASSES_DIR . '/class-tto-sidebar.php';
 
 // Starter Content.
 require_once TTO_CLASSES_DIR . '/class-tto-content.php';

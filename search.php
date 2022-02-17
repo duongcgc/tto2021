@@ -13,17 +13,8 @@ get_header();
 
 if ( have_posts() ) {
 	?>
-	<header class="page-header alignwide">
-		<h1 class="page-title">
-			<?php 
-			printf(
-				/* translators: %s: Search term. */
-				esc_html__( 'Results for "%s"', 'twentytwentyone' ),
-				'<span class="page-description search-term">' . esc_html( get_search_query() ) . '</span>'
-			);
-			?>
-		</h1>
-	</header><!-- .page-header -->
+	
+	<?php TTO_Page_Header::render('search'); ?>
 
 	<div class="search-result-count default-max-width">
 		<?php
@@ -55,7 +46,7 @@ if ( have_posts() ) {
 	} // End the loop.
 
 	// Previous/next page navigation.
-	twenty_twenty_one_the_posts_navigation();
+	TTO_Template_Tag::twenty_twenty_one_the_posts_navigation();
 
 	// If no content, include the "No posts found" template.
 } else {
