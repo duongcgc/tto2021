@@ -15,7 +15,7 @@ if ( have_posts() ) {
 	?>
 	<header class="page-header alignwide">
 		<h1 class="page-title">
-			<?php
+			<?php 
 			printf(
 				/* translators: %s: Search term. */
 				esc_html__( 'Results for "%s"', 'twentytwentyone' ),
