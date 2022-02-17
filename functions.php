@@ -58,7 +58,6 @@ require_once TTO_CLASSES_DIR . '/class-tto-template-function.php';
 // Custom template tags for the theme.
 require_once TTO_CLASSES_DIR . '/class-tto-template-tag.php';
 
-
 // Customizer additions.
 require_once TTO_CLASSES_DIR . '/class-tto-customize.php';
 
