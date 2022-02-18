@@ -46,8 +46,14 @@ if (!class_exists('TTO_Theme')) {
             add_action('after_setup_theme', array($this, 'twenty_twenty_one_setup'));
         }
 
+        // Get Settings
         public static function get_setting($name, $default) {
             return get_theme_mod( $name, $default );
+        }
+
+        // Get Options
+        public static function get_option($name, $default = '') {
+            return get_option($name, $default);
         }
 
         public function twenty_twenty_one_content_width() {

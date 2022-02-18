@@ -24,7 +24,7 @@ if (post_password_required()) {
 
 ?>
 
-<div id="comments" class="comments-area default-max-width <?php echo get_option('show_avatars') ? 'show-avatars' : ''; ?>">
+<div id="comments" class="comments-area default-max-width <?php echo TTO_Theme::get_option('show_avatars') ? 'show-avatars' : ''; ?>">
 
 	<?php
 	if (have_comments()) :
