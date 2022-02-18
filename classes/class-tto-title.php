@@ -24,6 +24,29 @@ if (!class_exists('TTO_Title')) {
         }
 
 
+        // article title
+        public static function for_article() {
+        ?>    
+            
+            <header class="entry-header alignwide">
+			    <?php TTO_Template_Tag::twenty_twenty_one_post_thumbnail(); ?>
+		    </header><!-- .entry-header -->
+
+        <?php
+        }
+
+        // front-page title
+        public static function for_front() {
+        ?>    
+            
+            <header class="entry-header alignwide">
+			    <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			    <?php TTO_Template_Tag::twenty_twenty_one_post_thumbnail(); ?>
+		    </header><!-- .entry-header -->
+
+        <?php
+        }
+
         // entry title
         public static function for_entry() {
         ?>    
@@ -81,6 +104,70 @@ if (!class_exists('TTO_Title')) {
         <?php
         }
 
+        // page none title
+        public static function for_none() {
+        ?> 
+
+            <header class="page-header alignwide">
+            <?php if ( is_search() ) : ?>
+
+                <h1 class="page-title">
+                    <?php
+                    printf(
+                        /* translators: %s: Search term. */
+                        esc_html__( 'Results for "%s"', 'twentytwentyone' ),
+                        '<span class="page-description search-term">' . esc_html( get_search_query() ) . '</span>'
+                    );
+                    ?>
+                </h1>
+
+            <?php else : ?>
+
+                <h1 class="page-title"><?php esc_html_e( 'Nothing here', 'twentytwentyone' ); ?></h1>
+
+            <?php endif; ?>
+            </header><!-- .page-header -->
+
+        <?php
+        }
+
+        // post excerpt
+        public static function for_excerpt() {
+
+            // Don't show the title if the post-format is `aside` or `status`.
+            $post_format = get_post_format();
+            if ( 'aside' === $post_format || 'status' === $post_format ) {
+                return;
+            }
+            ?>
+
+            <header class="entry-header">
+                <?php
+                the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' );
+                TTO_Template_Tag::twenty_twenty_one_post_thumbnail();
+                ?>
+            </header><!-- .entry-header -->
+
+        <?php
+        }
+
+        // post title
+        public static function for_post() {
+        ?>    
+
+            <header class="entry-header">
+                <?php if ( is_singular() ) : ?>
+                    <?php the_title( '<h1 class="entry-title default-max-width">', '</h1>' ); ?>
+                <?php else : ?>
+                    <?php the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+                <?php endif; ?>
+
+                <?php TTO_Template_Tag::twenty_twenty_one_post_thumbnail(); ?>
+            </header><!-- .entry-header -->
+
+        <?php
+        }
+
         // page title
         public static function for_page() {
         ?>    
@@ -88,6 +175,18 @@ if (!class_exists('TTO_Title')) {
             <header class="page-header alignwide">
                 <h1 class="page-title"><?php single_post_title(); ?></h1>
             </header><!-- .page-header --> 
+
+        <?php
+        }
+
+        // single title
+        public static function for_single() {
+        ?>    
+
+            <header class="entry-header alignwide">
+                <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+                <?php TTO_Template_Tag::twenty_twenty_one_post_thumbnail(); ?>
+            </header><!-- .entry-header -->
 
         <?php
         }

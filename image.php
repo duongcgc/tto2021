@@ -19,15 +19,15 @@ while ( have_posts() ) {
 
 		<div class="entry-content">
 			
-			<?php TTO_Image::render(); ?>
-
-			<?php
+		<?php 
+		
+			TTO_Image::render(); 
 			
 			the_content();
 
 			TTO_PageNav::for_page();
 
-			?>
+		?>
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer default-max-width">

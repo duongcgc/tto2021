@@ -14,10 +14,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="entry-header alignwide">
-		<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
-		<?php TTO_Template_Tag::twenty_twenty_one_post_thumbnail(); ?>
-	</header><!-- .entry-header -->
+	<?php TTO_Title::for_single(); ?>	
 
 	<div class="entry-content">
 		<?php
@@ -29,9 +26,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer default-max-width">
-		<?php TTO_Template_Tag::twenty_twenty_one_entry_meta_footer(); ?>
-	</footer><!-- .entry-footer -->
+	<?php TTO_Entry_Footer::for_single(); ?>
 
 	<?php if (!is_singular('attachment')) : ?>
 		<?php get_template_part('template-parts/post/author-bio'); ?>

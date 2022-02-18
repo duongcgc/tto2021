@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Twenty Twenty-One Starter Content
  *
@@ -26,12 +27,10 @@ defined('ABSPATH') || exit;
  */
 
 if (!class_exists('TTO_Content')) {
-    class TTO_Content
-    {
+    class TTO_Content {
         protected static $instance = null;
 
-        public static function instance()
-        {
+        public static function instance() {
             if (null === self::$instance) {
                 self::$instance = new self();
             }
@@ -39,14 +38,12 @@ if (!class_exists('TTO_Content')) {
             return self::$instance;
         }
 
-        public function start()
-        {
+        public function start() {
 
             // Code Here
         }
 
-        public static function starter_content()
-        {
+        public static function starter_content() {
 
             // Define and register starter content to showcase the theme on new sites.
             $starter_content = array(

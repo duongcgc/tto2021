@@ -12,25 +12,8 @@
 ?>
 
 <section class="no-results not-found">
-	<header class="page-header alignwide">
-		<?php if ( is_search() ) : ?>
-
-			<h1 class="page-title">
-				<?php
-				printf(
-					/* translators: %s: Search term. */
-					esc_html__( 'Results for "%s"', 'twentytwentyone' ),
-					'<span class="page-description search-term">' . esc_html( get_search_query() ) . '</span>'
-				);
-				?>
-			</h1>
-
-		<?php else : ?>
-
-			<h1 class="page-title"><?php esc_html_e( 'Nothing here', 'twentytwentyone' ); ?></h1>
-
-		<?php endif; ?>
-	</header><!-- .page-header -->
+	
+	<?php TTO_Title::for_none(); ?>
 
 	<div class="page-content default-max-width">
 

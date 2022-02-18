@@ -12,7 +12,7 @@
 get_header();
 
 if ( have_posts() ) {
-	?>
+?>
 	
 	<?php TTO_Title::render('search'); ?>
 
@@ -43,16 +43,19 @@ if ( have_posts() ) {
 		 * If you want to override this in a child theme, then include a file
 		 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 		 */
-		get_template_part( 'template-parts/content/content-excerpt', get_post_format() );
+		TTO_Template_Part::render('template-parts/content/content-excerpt', get_post_format());
+
 	} // End the loop.
 
 	// Previous/next page navigation.
 	TTO_Template_Tag::twenty_twenty_one_the_posts_navigation();
 
 	// If no content, include the "No posts found" template.
+
 } else {
-	// get_template_part( 'template-parts/content/content-none' );
+
 	TTO_Template_Part::render('none');
+
 }
 
 get_footer();

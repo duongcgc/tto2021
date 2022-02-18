@@ -88,6 +88,9 @@ require_once TTO_CLASSES_DIR . '/class-tto-pagenav.php';
 // Comments.
 require_once TTO_CLASSES_DIR . '/class-tto-comments.php';
 
+// Entry Footer.
+require_once TTO_CLASSES_DIR . '/class-tto-entry-footer.php';
+
 // Footer.
 require_once TTO_CLASSES_DIR . '/class-tto-footer.php';
 

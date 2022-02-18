@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying page content in page.php
  *
@@ -13,40 +14,27 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php if ( ! is_front_page() ) : ?>
-		<header class="entry-header alignwide">
-			<?php get_template_part( 'template-parts/header/entry-header' ); ?>
-			<?php TTO_Template_Tag::twenty_twenty_one_post_thumbnail(); ?>
-		</header><!-- .entry-header -->
-	<?php elseif ( has_post_thumbnail() ) : ?>
-		<header class="entry-header alignwide">
-			<?php TTO_Template_Tag::twenty_twenty_one_post_thumbnail(); ?>
-		</header><!-- .entry-header -->
+	<?php if (!is_front_page()) : ?>
+
+		<?php TTO_Title::for_front(); ?>
+
+	<?php elseif (has_post_thumbnail()) : ?>
+
+		<?php TTO_Title::for_article(); ?>
+
 	<?php endif; ?>
 
 	<div class="entry-content">
-		<?php
+	<?php
+	
 		the_content();
 
 		// Page Navigation
 		TTO_PageNav::for_page();
 
-		?>
+	?>
 	</div><!-- .entry-content -->
 
-	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer default-max-width">
-			<?php
-			edit_post_link(
-				sprintf(
-					/* translators: %s: Name of current post. Only visible to screen readers. */
-					esc_html__( 'Edit %s', 'twentytwentyone' ),
-					'<span class="screen-reader-text">' . get_the_title() . '</span>'
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);
-			?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
+	<?php TTO_Entry_Footer::for_page(); ?>
+
 </article><!-- #post-<?php the_ID(); ?> -->

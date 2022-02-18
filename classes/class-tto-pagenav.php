@@ -49,7 +49,7 @@ if (!class_exists('TTO_PageNav')) {
                     /* translators: %: Page number. */
                     'pagelink' => esc_html__('Page %', 'twentytwentyone'),
                 )
-            );            
+            ); 
         }
 
         // Post navigation
