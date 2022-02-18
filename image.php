@@ -15,7 +15,7 @@ while ( have_posts() ) {
 	?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		
-		<?php TTO_Page_Header::render('entry'); ?>
+		<?php TTO_Title::for_entry(); ?>
 
 		<div class="entry-content">
 			<figure class="wp-block-image">

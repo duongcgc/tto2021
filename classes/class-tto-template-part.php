@@ -26,7 +26,11 @@ if (!class_exists('TTO_Template_Part')) {
 
             if ( ($folder != '') && ($part != 'none') )  {
 
-                get_template_part('template-parts/' . $folder . '/' . $folder, $part);
+                if ( strpos($folder, '/') ) {
+                    get_template_part($folder, $part);
+                } else {
+                    get_template_part('template-parts/' . $folder . '/' . $folder, $part);
+                }                
 
             } else {
 

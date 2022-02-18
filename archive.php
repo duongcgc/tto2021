@@ -11,27 +11,23 @@
 
 get_header();
 
-$description = get_the_archive_description();
 ?>
 
 <?php if ( have_posts() ) : ?>
 
-	<header class="page-header alignwide">
-		<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
-		<?php if ( $description ) : ?>
-			<div class="archive-description"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
-		<?php endif; ?>
-	</header><!-- .page-header -->
+	<?php TTO_Title::for_archive(); ?>
 
 	<?php while ( have_posts() ) : ?>
+
 		<?php the_post(); ?>
-		<?php get_template_part( 'template-parts/content/content', get_theme_mod( 'display_excerpt_or_full_post', 'excerpt' ) ); ?>
+		<?php TTO_Template_Part::render('content', TTO_Theme::get_setting('display_excerpt_or_full_post', 'excerpt')) ?>
+		
 	<?php endwhile; ?>
 
 	<?php TTO_Template_Tag::twenty_twenty_one_the_posts_navigation(); ?>
 
 <?php else : ?>
-	<?php get_template_part( 'template-parts/content/content-none' ); ?>
+	<?php TTO_Template_Part::render('none'); ?>
 <?php endif; ?>
 
 <?php get_footer(); ?>

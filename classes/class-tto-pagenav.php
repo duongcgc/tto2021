@@ -20,6 +20,26 @@ if (!class_exists('TTO_PageNav')) {
         public function start() {
         }
 
+        // Comment Navigation
+        public static function for_comment() {
+            the_comments_pagination(
+                array(
+                    'before_page_number' => esc_html__( 'Page', 'twentytwentyone' ) . ' ',
+                    'mid_size'           => 0,
+                    'prev_text'          => sprintf(
+                        '%s <span class="nav-prev-text">%s</span>',
+                        is_rtl() ? TTO_Template_Function::twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : TTO_Template_Function::twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ),
+                        esc_html__( 'Older comments', 'twentytwentyone' )
+                    ),
+                    'next_text'          => sprintf(
+                        '<span class="nav-next-text">%s</span> %s',
+                        esc_html__( 'Newer comments', 'twentytwentyone' ),
+                        is_rtl() ? TTO_Template_Function::twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : TTO_Template_Function::twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' )
+                    ),
+                )
+            );
+        }
+
         // Page Navigation
         public static function for_page() {
             wp_link_pages(

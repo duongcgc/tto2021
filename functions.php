@@ -77,7 +77,7 @@ require_once TTO_CLASSES_DIR . '/class-tto-menu.php';
 require_once TTO_CLASSES_DIR . '/class-tto-header.php';
 
 // Page Header.
-require_once TTO_CLASSES_DIR . '/class-tto-page-header.php';
+require_once TTO_CLASSES_DIR . '/class-tto-title.php';
 
 // Page Navigation.
 require_once TTO_CLASSES_DIR . '/class-tto-pagenav.php';

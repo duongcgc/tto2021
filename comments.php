@@ -21,7 +21,6 @@ if ( post_password_required() ) {
 	return;
 }
 
-$twenty_twenty_one_comment_count = get_comments_number();
 ?>
 
 <div id="comments" class="comments-area default-max-width <?php echo get_option( 'show_avatars' ) ? 'show-avatars' : ''; ?>">
@@ -29,19 +28,8 @@ $twenty_twenty_one_comment_count = get_comments_number();
 	<?php
 	if ( have_comments() ) :
 		?>
-		<h2 class="comments-title">
-			<?php if ( '1' === $twenty_twenty_one_comment_count ) : ?>
-				<?php esc_html_e( '1 comment', 'twentytwentyone' ); ?>
-			<?php else : ?>
-				<?php
-				printf(
-					/* translators: %s: Comment count number. */
-					esc_html( _nx( '%s comment', '%s comments', $twenty_twenty_one_comment_count, 'Comments title', 'twentytwentyone' ) ),
-					esc_html( number_format_i18n( $twenty_twenty_one_comment_count ) )
-				);
-				?>
-			<?php endif; ?>
-		</h2><!-- .comments-title -->
+		
+		<?php TTO_Title::for_comments(); ?>
 
 		<ol class="comment-list">
 			<?php
@@ -55,24 +43,7 @@ $twenty_twenty_one_comment_count = get_comments_number();
 			?>
 		</ol><!-- .comment-list -->
 
-		<?php
-		the_comments_pagination(
-			array(
-				'before_page_number' => esc_html__( 'Page', 'twentytwentyone' ) . ' ',
-				'mid_size'           => 0,
-				'prev_text'          => sprintf(
-					'%s <span class="nav-prev-text">%s</span>',
-					is_rtl() ? TTO_Template_Function::twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : TTO_Template_Function::twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ),
-					esc_html__( 'Older comments', 'twentytwentyone' )
-				),
-				'next_text'          => sprintf(
-					'<span class="nav-next-text">%s</span> %s',
-					esc_html__( 'Newer comments', 'twentytwentyone' ),
-					is_rtl() ? TTO_Template_Function::twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : TTO_Template_Function::twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' )
-				),
-			)
-		);
-		?>
+		<?php TTO_PageNav::for_comment(); ?>
 
 		<?php if ( ! comments_open() ) : ?>
 			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'twentytwentyone' ); ?></p>

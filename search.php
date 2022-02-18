@@ -14,7 +14,7 @@ get_header();
 if ( have_posts() ) {
 	?>
 	
-	<?php TTO_Page_Header::render('search'); ?>
+	<?php TTO_Title::render('search'); ?>
 
 	<div class="search-result-count default-max-width">
 		<?php
@@ -50,7 +50,8 @@ if ( have_posts() ) {
 
 	// If no content, include the "No posts found" template.
 } else {
-	get_template_part( 'template-parts/content/content-none' );
+	// get_template_part( 'template-parts/content/content-none' );
+	TTO_Template_Part::render('none');
 }
 
 get_footer();
