@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying archive pages
  *
@@ -11,23 +12,24 @@
 
 get_header();
 
-?>
+if (have_posts()) :
 
-<?php if ( have_posts() ) : ?>
+	TTO_Title::for_archive();
 
-	<?php TTO_Title::for_archive(); ?>
+	while (have_posts()) :
 
-	<?php while ( have_posts() ) : ?>
+		the_post();
 
-		<?php the_post(); ?>
-		<?php TTO_Template_Part::render('content', TTO_Theme::get_setting('display_excerpt_or_full_post', 'excerpt')) ?>
-		
-	<?php endwhile; ?>
+		TTO_Template_Part::render('content', TTO_Theme::get_setting('display_excerpt_or_full_post', 'excerpt'));
 
-	<?php TTO_Template_Tag::twenty_twenty_one_the_posts_navigation(); ?>
+	endwhile;
 
-<?php else : ?>
-	<?php TTO_Template_Part::render('none'); ?>
-<?php endif; ?>
+	TTO_Template_Tag::twenty_twenty_one_the_posts_navigation();
 
-<?php get_footer(); ?>
+else :
+
+	TTO_Template_Part::render('none');
+	
+endif;
+
+get_footer();

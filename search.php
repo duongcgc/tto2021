@@ -32,6 +32,7 @@ if ( have_posts() ) {
 		);
 		?>
 	</div><!-- .search-result-count -->
+	
 	<?php
 	// Start the Loop.
 	while ( have_posts() ) {

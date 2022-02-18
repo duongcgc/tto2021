@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Functions and filters related to the menus.
  *
@@ -19,12 +20,10 @@ defined('ABSPATH') || exit;
  */
 
 if (!class_exists('TTO_Menu')) {
-    class TTO_Menu
-    {
+    class TTO_Menu {
         protected static $instance = null;
 
-        public static function instance()
-        {
+        public static function instance() {
             if (null === self::$instance) {
                 self::$instance = new self();
             }
@@ -32,8 +31,7 @@ if (!class_exists('TTO_Menu')) {
             return self::$instance;
         }
 
-        public function start()
-        {
+        public function start() {
 
             /**
              * Add a button to top-level menu items that has sub-menus.
@@ -48,7 +46,7 @@ if (!class_exists('TTO_Menu')) {
              * @return string Nav menu item start element.
              */
 
-            add_filter('walker_nav_menu_start_el', array( $this, 'twenty_twenty_one_add_sub_menu_toggle' ), 10, 4);
+            add_filter('walker_nav_menu_start_el', array($this, 'twenty_twenty_one_add_sub_menu_toggle'), 10, 4);
 
             /**
              * Displays SVG icons in the footer navigation.
@@ -62,7 +60,7 @@ if (!class_exists('TTO_Menu')) {
              * @return string The menu item output with social icon.
              */
 
-            add_filter('walker_nav_menu_start_el', array( $this, 'twenty_twenty_one_nav_menu_social_icons'), 10, 4);
+            add_filter('walker_nav_menu_start_el', array($this, 'twenty_twenty_one_nav_menu_social_icons'), 10, 4);
 
             /**
              * Filters the arguments for a single nav menu item.
@@ -75,35 +73,38 @@ if (!class_exists('TTO_Menu')) {
              * @return stdClass
              */
 
-            add_filter('nav_menu_item_args', array( $this, 'twenty_twenty_one_add_menu_description_args' ), 10, 3);
+            add_filter('nav_menu_item_args', array($this, 'twenty_twenty_one_add_menu_description_args'), 10, 3);
+        }
+
+        // Register the menu
+        public static function tto_register($menu_postions = array()) {
+            register_nav_menus( $menu_postions );
         }
 
         // add menu description
-        public function twenty_twenty_one_add_menu_description_args($args, $item, $depth)
-        {
+        public function twenty_twenty_one_add_menu_description_args($args, $item, $depth) {
             if ('</span>' !== $args->link_after) {
                 $args->link_after = '';
             }
-        
+
             if (0 === $depth && isset($item->description) && $item->description) {
                 // The extra <span> element is here for styling purposes: Allows the description to not be underlined on hover.
                 $args->link_after = '<p class="menu-item-description"><span>' . $item->description . '</span></p>';
             }
-        
+
             return $args;
         }
 
         // get navigation menu social_icons
-        public function twenty_twenty_one_nav_menu_social_icons($item_output, $item, $depth, $args)
-        {
+        public function twenty_twenty_one_nav_menu_social_icons($item_output, $item, $depth, $args) {
             // Change SVG icon inside social links menu if there is supported URL.
             if ('footer' === $args->theme_location) {
                 $svg = self::twenty_twenty_one_get_social_link_svg($item->url, 24);
-                if (! empty($svg)) {
+                if (!empty($svg)) {
                     $item_output = str_replace($args->link_before, $svg, $item_output);
                 }
             }
-        
+
             return $item_output;
         }
 
@@ -116,16 +117,14 @@ if (!class_exists('TTO_Menu')) {
          * @param int    $size The icon size in pixels.
          * @return string
          */
-        public function twenty_twenty_one_get_social_link_svg($uri, $size = 24)
-        {
+        public function twenty_twenty_one_get_social_link_svg($uri, $size = 24) {
             return TTO_SVG_Icons::get_social_link_svg($uri, $size);
         }
 
         // add submenu toggler
-        public function twenty_twenty_one_add_sub_menu_toggle($output, $item, $depth, $args)
-        {
+        public function twenty_twenty_one_add_sub_menu_toggle($output, $item, $depth, $args) {
             if (0 === $depth && in_array('menu-item-has-children', $item->classes, true)) {
-        
+
                 // Add toggle button.
                 $output .= '<button class="sub-menu-toggle" aria-expanded="false" onClick="twentytwentyoneExpandSubMenu(this)">';
                 $output .= '<span class="icon-plus">' . TTO_Template_Function::twenty_twenty_one_get_icon_svg('ui', 'plus', 18) . '</span>';

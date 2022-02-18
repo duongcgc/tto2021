@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying 404 pages (not found)
  *
@@ -10,12 +11,8 @@
  */
 
 get_header();
-?>
 
-	<?php TTO_Title::for_404(); ?>
+TTO_Title::for_404();
+TTO_Template_Part::render('content', '404');
 
-	<?php TTO_Template_Part::render('content','404'); ?>
-	
-
-<?php
 get_footer();

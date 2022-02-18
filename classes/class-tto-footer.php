@@ -38,13 +38,17 @@ if (!class_exists('TTO_Footer')) {
         public static function render() {
 
             // Footer Widgets
-            get_template_part( 'template-parts/footer/footer-widgets' ); 
+            TTO_Template_Part::render('footer','widgets');
 
             ?>
             <footer id="colophon" class="site-footer">
 
-                <?php get_template_part('template-parts/footer/footer-menu'); ?>
-                <?php get_template_part('template-parts/footer/footer-site-info'); ?>
+                <?php 
+
+                    TTO_Template_Part::render('footer','menu');
+                    TTO_Template_Part::render('footer','site-info');
+
+                ?>
 
             </footer><!-- #colophon -->
             <?php

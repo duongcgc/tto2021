@@ -96,12 +96,13 @@ if (!class_exists('TTO_Theme')) {
             set_post_thumbnail_size(1568, 9999);
 
             // Main Menus
-            register_nav_menus(
+            TTO_Menu::tto_register(
                 array(
                     'primary' => esc_html__('Primary menu', 'twentytwentyone'),
                     'footer'  => esc_html__('Secondary menu', 'twentytwentyone'),
                 )
             );
+            
 
             /*
              * Switch default core markup for search form, comment form, and comments

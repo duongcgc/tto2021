@@ -18,19 +18,14 @@ while ( have_posts() ) :
 	TTO_Template_Part::render('content', 'single');	
 
 	if ( is_attachment() ) {
+
 		// Parent post navigation.
-		the_post_navigation(
-			array(
-				/* translators: %s: Parent post link. */
-				'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'twentytwentyone' ), '%title' ),
-			)
-		);
+		TTO_PageNav::for_attachment();
+
 	}
 
-	// If comments are open or there is at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-		comments_template();
-	}
+	// Comment Teamplate
+	TTO_Comments::render_template();
 
 	// Previous/next post navigation.
 	TTO_PageNav::for_post();

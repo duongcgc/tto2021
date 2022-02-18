@@ -27,12 +27,12 @@
 		<?php esc_html_e( 'Skip to content', 'twentytwentyone' ); ?>
 	</a>
 
-	<?php TTO_Header::instance()->render(); ?>
-
-	<?php
+	<?php 
+		
+		TTO_Header::instance()->render(); 
 	
 		TTO_HTML_Tag::instance()->open('', 'content', 'site-content');
-		TTO_HTML_Tag::instance()->open('', 'primary', 'content-area');
-		TTO_HTML_Tag::instance()->open('main', 'main', 'site-main');
+			TTO_HTML_Tag::instance()->open('', 'primary', 'content-area');
+				TTO_HTML_Tag::instance()->open('main', 'main', 'site-main');
 			
 	?>

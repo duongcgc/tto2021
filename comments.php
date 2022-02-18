@@ -27,19 +27,19 @@ if (post_password_required()) {
 <div id="comments" class="comments-area default-max-width <?php echo TTO_Theme::get_option('show_avatars') ? 'show-avatars' : ''; ?>">
 
 	<?php
-	if (have_comments()) :
-	?>
+	
+	if (have_comments()) :	
 
-		<?php TTO_Title::for_comments(); ?>
+		 TTO_Title::for_comments(); 
 
-		<?php TTO_Comments::render(); ?>
+		 TTO_Comments::render(); 
 
-		<?php TTO_PageNav::for_comment(); ?>
+		 TTO_PageNav::for_comment(); 
 
-	<?php endif; ?>
-
-	<?php
+	 endif; 
+	
 	TTO_Comments::render_form();
+
 	?>
 
 </div><!-- #comments -->

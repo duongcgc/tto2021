@@ -52,6 +52,9 @@ if ( version_compare( $GLOBALS['wp_version'], '5.3', '<' ) ) {
 // Enhance the theme by hooking into WordPress.
 require_once TTO_CLASSES_DIR . '/class-tto-action-filter.php';
 
+// Hook of Theme.
+require_once TTO_CLASSES_DIR . '/class-tto-hooks.php';
+
 // Template Function.
 require_once TTO_CLASSES_DIR . '/class-tto-template-function.php';
 
@@ -82,8 +85,14 @@ require_once TTO_CLASSES_DIR . '/class-tto-title.php';
 // Page Navigation.
 require_once TTO_CLASSES_DIR . '/class-tto-pagenav.php';
 
+// Comments.
+require_once TTO_CLASSES_DIR . '/class-tto-comments.php';
+
 // Footer.
 require_once TTO_CLASSES_DIR . '/class-tto-footer.php';
+
+// Footer Info.
+require_once TTO_CLASSES_DIR . '/class-tto-footer-info.php';
 
 // Sidebar.
 require_once TTO_CLASSES_DIR . '/class-tto-sidebar.php';

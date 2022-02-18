@@ -11,17 +11,11 @@
  * @since Twenty Twenty-One 1.0
  */
 
-?>
-			
-	<?php
-
-		TTO_HTML_Tag::instance()->close('', 'content');
+			TTO_HTML_Tag::instance()->close('', 'content');
 		TTO_HTML_Tag::instance()->close('', 'primary');
-		TTO_HTML_Tag::instance()->close('main', 'main');
+	TTO_HTML_Tag::instance()->close('main', 'main');
 
-	?>
-
-	<?php TTO_Footer::instance()->render(); ?>
+	TTO_Footer::instance()->render(); ?>
 
 </div><!-- #page -->
 

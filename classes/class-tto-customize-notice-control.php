@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customize API: TTO_Customize_Notice_Control class
  *
@@ -14,8 +15,7 @@
  *
  * @see WP_Customize_Control
  */
-class TTO_Customize_Notice_Control extends WP_Customize_Control
-{
+class TTO_Customize_Notice_Control extends WP_Customize_Control {
     /**
      * The control type.
      *
@@ -34,15 +34,14 @@ class TTO_Customize_Notice_Control extends WP_Customize_Control
      *
      * @return void
      */
-    public function render_content()
-    {
-        ?>
-		<div class="notice notice-warning">
-			<p><?php esc_html_e('To access the Dark Mode settings, select a light background color.', 'twentytwentyone'); ?></p>
-			<p><a href="<?php echo esc_url(__('https://wordpress.org/support/article/twenty-twenty-one/#dark-mode-support', 'twentytwentyone')); ?>">
-				<?php esc_html_e('Learn more about Dark Mode.', 'twentytwentyone'); ?>
-			</a></p>
-		</div>
-		<?php
+    public function render_content() {
+?>
+        <div class="notice notice-warning">
+            <p><?php esc_html_e('To access the Dark Mode settings, select a light background color.', 'twentytwentyone'); ?></p>
+            <p><a href="<?php echo esc_url(__('https://wordpress.org/support/article/twenty-twenty-one/#dark-mode-support', 'twentytwentyone')); ?>">
+                    <?php esc_html_e('Learn more about Dark Mode.', 'twentytwentyone'); ?>
+                </a></p>
+        </div>
+<?php
     }
 }

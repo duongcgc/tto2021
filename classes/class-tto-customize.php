@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Customizer settings for this theme.
  *
@@ -7,23 +8,21 @@
  * @since Twenty Twenty-One 1.0
  */
 
-if (! class_exists('TTO_Customize')) {
+if (!class_exists('TTO_Customize')) {
     /**
      * Customizer Settings.
      *
      * @since Twenty Twenty-One 1.0
      */
-    class TTO_Customize
-    {
+    class TTO_Customize {
 
         /**
          * Constructor. Instantiate the object.
          *
          * @since Twenty Twenty-One 1.0
          */
-        public function __construct()
-        {
-            add_action('customize_register', array( $this, 'register' ));
+        public function __construct() {
+            add_action('customize_register', array($this, 'register'));
         }
 
         /**
@@ -34,8 +33,7 @@ if (! class_exists('TTO_Customize')) {
          * @param WP_Customize_Manager $wp_customize Theme Customizer object.
          * @return void
          */
-        public function register($wp_customize)
-        {
+        public function register($wp_customize) {
 
             // Change site-title & description to postMessage.
             $wp_customize->get_setting('blogname')->transport        = 'postMessage'; // @phpstan-ignore-line. Assume that this setting exists.
@@ -46,7 +44,7 @@ if (! class_exists('TTO_Customize')) {
                 'blogname',
                 array(
                     'selector'        => '.site-title',
-                    'render_callback' => array( $this, 'partial_blogname' ),
+                    'render_callback' => array($this, 'partial_blogname'),
                 )
             );
 
@@ -55,7 +53,7 @@ if (! class_exists('TTO_Customize')) {
                 'blogdescription',
                 array(
                     'selector'        => '.site-description',
-                    'render_callback' => array( $this, 'partial_blogdescription' ),
+                    'render_callback' => array($this, 'partial_blogdescription'),
                 )
             );
 
@@ -65,7 +63,7 @@ if (! class_exists('TTO_Customize')) {
                 array(
                     'capability'        => 'edit_theme_options',
                     'default'           => true,
-                    'sanitize_callback' => array( __CLASS__, 'sanitize_checkbox' ),
+                    'sanitize_callback' => array(__CLASS__, 'sanitize_checkbox'),
                 )
             );
 
@@ -154,8 +152,7 @@ if (! class_exists('TTO_Customize')) {
          * @param bool $checked Whether or not a box is checked.
          * @return bool
          */
-        public static function sanitize_checkbox($checked = null)
-        {
+        public static function sanitize_checkbox($checked = null) {
             return (bool) isset($checked) && true === $checked;
         }
 
@@ -166,8 +163,7 @@ if (! class_exists('TTO_Customize')) {
          *
          * @return void
          */
-        public function partial_blogname()
-        {
+        public function partial_blogname() {
             bloginfo('name');
         }
 
@@ -178,8 +174,7 @@ if (! class_exists('TTO_Customize')) {
          *
          * @return void
          */
-        public function partial_blogdescription()
-        {
+        public function partial_blogdescription() {
             bloginfo('description');
         }
     }
